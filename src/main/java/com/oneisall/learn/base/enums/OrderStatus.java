@@ -87,7 +87,7 @@ public enum OrderStatus implements AllowOperate<UserType, Operation> {
      */
     @Override
     public CommonResult allowOperate(UserType userType, Operation operation) {
-        if (operation == null || userType == null || userType == UserType.ALL) {
+        if (operation == null || userType == null) {
             return CommonResult.failed("异常操作,操作或操作者无效,operation:[" + operation + "],userType:[" + userType + "]");
         }
         Set<Operation> allowSet = allowOperateSetting.get(userType);
