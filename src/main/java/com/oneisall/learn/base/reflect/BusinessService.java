@@ -1,6 +1,6 @@
 package com.oneisall.learn.base.reflect;
 
-import com.oneisall.learn.base.genericity.CommonResult;
+import com.oneisall.learn.common.CommonResult;
 
 /**
  * 某业务,有多个实现类,且都需要进行相同的业务操作,只是业务逻辑不同

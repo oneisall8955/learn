@@ -23,9 +23,9 @@ public class Main {
         String[] serviceNames = {"BusinessServiceAaaImpl", "BusinessServiceBbbImpl", "BusinessServiceCccImpl"};
         for (String serviceName : serviceNames) {
             service = BusinessServiceFactory.instance().getBusinessService("com.oneisall.learn.base.reflect." + serviceName);
-            for (String methodName : methodNames) {
-                service.getClass().getMethod(methodName, BusinessDto.class).invoke(service, dto);
-            }
+            service.operate1(dto);
+            service.operate2(dto);
+            service.operate3(dto);
             System.out.println("--------");
         }
     }

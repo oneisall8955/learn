@@ -1,6 +1,6 @@
 package com.oneisall.learn.base.reflect;
 
-import com.oneisall.learn.base.genericity.CommonResult;
+import com.oneisall.learn.common.CommonResult;
 
 /**
  * TODO :please describe it in one sentence

@@ -1,4 +1,4 @@
-package com.oneisall.learn.base.genericity;
+package com.oneisall.learn.common;
 
 /**
  * 通用的易使用返回结果
