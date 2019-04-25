@@ -2,12 +2,7 @@ package com.oneisall.learn.base.enums;
 
 import com.oneisall.learn.common.CommonResult;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 退废订单状态
@@ -20,23 +15,23 @@ public enum OrderStatus implements AllowOperate<UserType, Operation> {
      * 提交退废申请后第一个状态，可退的录入退票费、手续费审核通过，
      * 无法退废的可进行暂不能操作
      */
-    WAIT_AUDIT("待审核", new HashMap<>()),
+    WAIT_AUDIT("待审核"),
     /**
      * 暂不能操作后的状态，确认不能退废则取消退废，确认可退则上传凭证继续退废
      */
-    TEMP_CANNOT_REFUND("暂不能退废", new HashMap<>()),
+    TEMP_CANNOT_REFUND("暂不能退废"),
     /**
      * 取消退废后的状态，为终结状态，不可进行任何操作
      */
-    CANCELED("已取消", new HashMap<>()),
+    CANCELED("已取消"),
     /**
      * 审核通过后的状态，待实际收到退款后，操作退款（也可先垫付退款）
      */
-    WAIT_REFUND("待退款", new HashMap<>()),
+    WAIT_REFUND("待退款"),
     /**
      * 操作退款后的状态，为终结状态，特殊情况下可由运营商发起补退款
      */
-    REFUNDED("已退款", new HashMap<>());
+    REFUNDED("已退款");
 
     public final String text;
 
@@ -45,9 +40,9 @@ public enum OrderStatus implements AllowOperate<UserType, Operation> {
      */
     private final Map<UserType, Set<Operation>> allowOperateSetting;
 
-    OrderStatus(String text, Map<UserType, Set<Operation>> allowOperate) {
+    OrderStatus(String text) {
         this.text = text;
-        this.allowOperateSetting = allowOperate;
+        this.allowOperateSetting = new HashMap<>();
     }
 
     // 初始化
