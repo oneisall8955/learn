@@ -41,9 +41,6 @@ public class MainTest {
             Map<UserType, List<Operation>> value = entry.getValue();
             for (Map.Entry<UserType, List<Operation>> entry1 : value.entrySet()) {
                 UserType key1 = entry1.getKey();
-                if (key1 == UserType.ALL) {
-                    continue;
-                }
                 List<Operation> value1 = entry1.getValue();
                 String join = StringUtils.join(value1.stream().map(operation -> operation.text).collect(Collectors.toList()), ",");
                 System.out.println("退废单状态:[" + key.text + "],角色[" + key1.text + "],允许操作:" + join);

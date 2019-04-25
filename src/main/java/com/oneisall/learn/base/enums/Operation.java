@@ -1,5 +1,8 @@
 package com.oneisall.learn.base.enums;
 
+/**
+ * @author oneisall
+ */
 public enum Operation {
     /**
      *审核通过
