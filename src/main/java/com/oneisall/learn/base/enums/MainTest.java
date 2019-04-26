@@ -17,93 +17,107 @@ public class MainTest {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     enum Foo {
-        A("Foo-A", FooBar.A),
-        B("Foo-B", FooBar.B),
-        C("Foo-C", FooBar.C),
+        A("Foo-A"),
+        B("Foo-B"),
+        C("Foo-C"),
         ;
         public String text;
-        public FooBar fooBar;
 
-        Foo(String text, FooBar fooBar) {
+        Foo(String text) {
             this.text = text;
-            this.fooBar = fooBar;
         }
 
         public Bar bar;
 
         static {
-            Foo.A.bar = Bar.A;
-            Foo.B.bar = Bar.B;
-            Foo.C.bar = Bar.C;
+            A.bar = Bar.A;
+            B.bar = Bar.B;
+            C.bar = Bar.C;
         }
     }
 
     enum Bar {
-        A("Bar-A", FooBar.A),
-        B("Bar-B", FooBar.B),
-        C("Bar-C", FooBar.C),
+        A("Bar-A"),
+        B("Bar-B"),
+        C("Bar-C"),
         ;
         public String text;
-        public FooBar fooBar;
 
-        Bar(String text, FooBar fooBar) {
+        Bar(String text) {
             this.text = text;
-            this.fooBar = fooBar;
         }
 
         public Foo foo;
 
         static {
-            Bar.A.foo = Foo.A;
-            Bar.B.foo = Foo.B;
-            Bar.C.foo = Foo.C;
+            A.foo = Foo.A;
+            B.foo = Foo.B;
+            C.foo = Foo.C;
         }
     }
 
-    enum FooBar {
-        A("FooBar-A", Foo.A, Bar.A),
-        B("FooBar-B", Foo.B, Bar.B),
-        C("FooBar-C", Foo.C, Bar.C),
+    enum Qux {
+        A("Qux-A", Baz.A),
+        B("Qux-B", Baz.B),
+        C("Qux-C", Baz.C),
         ;
         public String text;
-        public Foo foo;
-        public Bar bar;
+        public Baz baz;
 
-        FooBar(String text, Foo foo, Bar bar) {
+        Qux(String text, Baz baz) {
             this.text = text;
-            this.foo = foo;
-            this.bar = bar;
+            this.baz = baz;
+        }
+    }
+
+    enum Baz {
+        A("Baz-A", Qux.A),
+        B("Baz-B", Qux.B),
+        C("Baz-C", Qux.C),;
+        public String text;
+        public Qux qux;
+
+        Baz(String text, Qux qux) {
+            this.text = text;
+            this.qux = qux;
         }
     }
 
     @Test
-    public void EnumTest1() {
+    public void enumTest1() {
         Foo foo;
         Bar bar;
-        FooBar fooBar;
         for (Foo item : Foo.values()) {
             foo = item;
             bar = foo.bar;
-            fooBar = foo.fooBar;
-            logger.info("Foo's text:{},bar:{},fooBar:{}", foo.text, Optional.ofNullable(bar).map(e -> e.text).orElse(null), Optional.ofNullable(fooBar).map(e -> e.text).orElse(null));
+
+            logger.info("Foo 's text:{},bar:{}", foo.text, Optional.ofNullable(bar).map(e -> e.text).orElse(null));
         }
+        logger.info("------------------");
         for (Bar item : Bar.values()) {
             bar = item;
             foo = bar.foo;
-            fooBar = bar.fooBar;
-            logger.info("Bar's text:{},foo:{},fooBar:{}", bar.text, Optional.ofNullable(foo).map(e -> e.text).orElse(null), Optional.ofNullable(fooBar).map(e -> e.text).orElse(null));
+            logger.info("Bar 's text:{},foo:{}", bar.text, Optional.ofNullable(foo).map(e -> e.text).orElse(null));
         }
-        for (FooBar item : FooBar.values()) {
-            fooBar = item;
-            foo = fooBar.foo;
-            bar = fooBar.bar;
-            logger.info("FooBar's text:{},foo:{},bar:{}", fooBar.text, Optional.ofNullable(foo).map(e -> e.text).orElse(null), Optional.ofNullable(bar).map(e -> e.text).orElse(null));
-        }
+        logger.info("------------------");
+        Qux qux;
+        Baz baz;
+        for (Qux item : Qux.values()) {
+            qux = item;
+            baz = qux.baz;
 
+            logger.info("Qux 's text:{},Baz:{}", qux.text, Optional.ofNullable(baz).map(e -> e.text).orElse(null));
+        }
+        logger.info("------------------");
+        for (Baz item : Baz.values()) {
+            baz = item;
+            qux = baz.qux;
+            logger.info("Baz 's text:{},qux:{}", baz.text, Optional.ofNullable(qux).map(e -> e.text).orElse(null));
+        }
     }
 
     @Test
-    public void EnumTest2() {
+    public void enumTest2() {
         OrderStatus[] statuses = OrderStatus.values();
         UserType[] userTypes = UserType.values();
         Operation[] operations = Operation.values();
