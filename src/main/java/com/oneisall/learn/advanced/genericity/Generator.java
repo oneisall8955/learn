@@ -1,4 +1,4 @@
-package com.oneisall.learn.base.genericity;
+package com.oneisall.learn.advanced.genericity;
 
 /**
  * TODO :please describe it in one sentence

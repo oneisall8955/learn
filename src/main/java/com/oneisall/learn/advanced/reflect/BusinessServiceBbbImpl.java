@@ -1,4 +1,4 @@
-package com.oneisall.learn.base.reflect;
+package com.oneisall.learn.advanced.reflect;
 
 import com.oneisall.learn.common.CommonResult;
 
@@ -8,27 +8,28 @@ import com.oneisall.learn.common.CommonResult;
  * @author oneisall
  * @version v1 2019/4/25 10:15
  */
-public class BusinessServiceAaaImpl implements BusinessService{
+@SuppressWarnings("all")
+public class BusinessServiceBbbImpl implements BusinessService{
 
     @Override
     public CommonResult<BusinessDto> operate1(BusinessDto dto) {
-        dto.setName("Aaa-operate1");
+        dto.setName("Ccc-operate1");
         dto.setAge(21);
-        return info("BusinessServiceAaaImpl-operate1",dto);
+        return info("BusinessServiceCccImpl-operate1",dto);
     }
 
     @Override
     public CommonResult<BusinessDto> operate2(BusinessDto dto) {
-        dto.setName("Aaa-operate2");
+        dto.setName("Ccc-operate2");
         dto.setAge(22);
-        return info("BusinessServiceAaaImpl-operate2",dto);
+        return info("BusinessServiceCccImpl-operate2",dto);
     }
 
     @Override
     public CommonResult<BusinessDto> operate3(BusinessDto dto) {
-        dto.setName("Aaa-operate3");
+        dto.setName("Ccc-operate3");
         dto.setAge(23);
-        return info("BusinessServiceAaaImpl-operate3",dto);
+        return info("BusinessServiceCccImpl-operate3",dto);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.oneisall.learn.base.reflect;
+package com.oneisall.learn.advanced.reflect;
 
 /**
  * TODO :please describe it in one sentence

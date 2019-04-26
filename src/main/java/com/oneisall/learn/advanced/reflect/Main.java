@@ -1,4 +1,4 @@
-package com.oneisall.learn.base.reflect;
+package com.oneisall.learn.advanced.reflect;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -22,7 +22,7 @@ public class Main {
         System.out.println("--------");
         String[] serviceNames = {"BusinessServiceAaaImpl", "BusinessServiceBbbImpl", "BusinessServiceCccImpl"};
         for (String serviceName : serviceNames) {
-            service = BusinessServiceFactory.instance().getBusinessService("com.oneisall.learn.base.reflect." + serviceName);
+            service = BusinessServiceFactory.instance().getBusinessService("com.oneisall.learn.basic.reflect." + serviceName);
             service.operate1(dto);
             service.operate2(dto);
             service.operate3(dto);

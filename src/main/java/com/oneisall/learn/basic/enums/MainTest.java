@@ -1,4 +1,4 @@
-package com.oneisall.learn.base.enums;
+package com.oneisall.learn.basic.enums;
 
 import com.oneisall.learn.common.CommonResult;
 import com.sun.deploy.util.StringUtils;

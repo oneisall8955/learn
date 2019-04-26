@@ -1,4 +1,4 @@
-package com.oneisall.learn.io;
+package com.oneisall.learn.basic.io;
 
 import java.io.*;
 import java.net.URL;

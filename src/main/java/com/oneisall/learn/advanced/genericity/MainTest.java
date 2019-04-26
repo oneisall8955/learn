@@ -1,4 +1,4 @@
-package com.oneisall.learn.base.genericity;
+package com.oneisall.learn.advanced.genericity;
 
 import org.junit.Test;
 import org.slf4j.Logger;
