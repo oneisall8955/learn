@@ -2,18 +2,108 @@ package com.oneisall.learn.base.enums;
 
 import com.oneisall.learn.common.CommonResult;
 import com.sun.deploy.util.StringUtils;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
  * @author oneisall
  */
 public class MainTest {
-    public static void main(String[] args) {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    enum Foo {
+        A("Foo-A", FooBar.A),
+        B("Foo-B", FooBar.B),
+        C("Foo-C", FooBar.C),
+        ;
+        public String text;
+        public FooBar fooBar;
+
+        Foo(String text, FooBar fooBar) {
+            this.text = text;
+            this.fooBar = fooBar;
+        }
+
+        public Bar bar;
+
+        static {
+            Foo.A.bar = Bar.A;
+            Foo.B.bar = Bar.B;
+            Foo.C.bar = Bar.C;
+        }
+    }
+
+    enum Bar {
+        A("Bar-A", FooBar.A),
+        B("Bar-B", FooBar.B),
+        C("Bar-C", FooBar.C),
+        ;
+        public String text;
+        public FooBar fooBar;
+
+        Bar(String text, FooBar fooBar) {
+            this.text = text;
+            this.fooBar = fooBar;
+        }
+
+        public Foo foo;
+
+        static {
+            Bar.A.foo = Foo.A;
+            Bar.B.foo = Foo.B;
+            Bar.C.foo = Foo.C;
+        }
+    }
+
+    enum FooBar {
+        A("FooBar-A", Foo.A, Bar.A),
+        B("FooBar-B", Foo.B, Bar.B),
+        C("FooBar-C", Foo.C, Bar.C),
+        ;
+        public String text;
+        public Foo foo;
+        public Bar bar;
+
+        FooBar(String text, Foo foo, Bar bar) {
+            this.text = text;
+            this.foo = foo;
+            this.bar = bar;
+        }
+    }
+
+    @Test
+    public void EnumTest1() {
+        Foo foo;
+        Bar bar;
+        FooBar fooBar;
+        for (Foo item : Foo.values()) {
+            foo = item;
+            bar = foo.bar;
+            fooBar = foo.fooBar;
+            logger.info("Foo's text:{},bar:{},fooBar:{}", foo.text, Optional.ofNullable(bar).map(e -> e.text).orElse(null), Optional.ofNullable(fooBar).map(e -> e.text).orElse(null));
+        }
+        for (Bar item : Bar.values()) {
+            bar = item;
+            foo = bar.foo;
+            fooBar = bar.fooBar;
+            logger.info("Bar's text:{},foo:{},fooBar:{}", bar.text, Optional.ofNullable(foo).map(e -> e.text).orElse(null), Optional.ofNullable(fooBar).map(e -> e.text).orElse(null));
+        }
+        for (FooBar item : FooBar.values()) {
+            fooBar = item;
+            foo = fooBar.foo;
+            bar = fooBar.bar;
+            logger.info("FooBar's text:{},foo:{},bar:{}", fooBar.text, Optional.ofNullable(foo).map(e -> e.text).orElse(null), Optional.ofNullable(bar).map(e -> e.text).orElse(null));
+        }
+
+    }
+
+    @Test
+    public void EnumTest2() {
         OrderStatus[] statuses = OrderStatus.values();
         UserType[] userTypes = UserType.values();
         Operation[] operations = Operation.values();
@@ -47,5 +137,6 @@ public class MainTest {
             }
             System.out.println("-");
         }
+        System.out.println("----------------------------");
     }
 }
