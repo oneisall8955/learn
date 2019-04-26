@@ -14,7 +14,7 @@ package com.oneisall.learn.advanced.concurrent.chapter01;
  * @see <a href="https://time.geekbang.org/column/article/83682">https://time.geekbang.org/column/article/83682</a>
  */
 @SuppressWarnings("all")
-public class Test {
+public class Visibility {
 
     private long count = 0;
 
@@ -26,7 +26,7 @@ public class Test {
     }
 
     public static long calc() throws Exception {
-        final Test test = new Test();
+        final Visibility test = new Visibility();
         // 创建两个线程，执行 add() 操作
         Thread threadA = new Thread(() -> {
             test.add10K();
@@ -44,7 +44,7 @@ public class Test {
     }
 
     public static void main(String[] args) throws Exception {
-        long calc = Test.calc();
+        long calc = Visibility.calc();
         System.out.println(calc);
     }
 }
