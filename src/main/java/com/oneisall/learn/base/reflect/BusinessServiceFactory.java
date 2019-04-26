@@ -23,11 +23,11 @@ class BusinessServiceFactory {
     /**
      * map container to store the existed BusinessService
      */
-    private final Map<String, BusinessService> hTableMapperMap = new ConcurrentHashMap<>();
+    private final Map<String, BusinessService> businessServiceMap = new ConcurrentHashMap<>();
 
 
     BusinessService getBusinessService(String className) {
-        BusinessService hTableMapper = hTableMapperMap.get(className);
+        BusinessService hTableMapper = businessServiceMap.get(className);
         if(hTableMapper == null) {
             try {
                 /*
@@ -37,7 +37,7 @@ class BusinessServiceFactory {
                 /*
                   cache into the map
                  */
-                hTableMapperMap.put(className, hTableMapper);
+                businessServiceMap.put(className, hTableMapper);
             } catch (Exception e) {
                 hTableMapper = null;
             }
