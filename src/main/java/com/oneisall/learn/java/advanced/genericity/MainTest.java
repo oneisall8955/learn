@@ -23,7 +23,7 @@ public class MainTest {
         logger.info("泛型测试key is {}", new Generic<>(false).getKey());
 
         //错误的 instanceof 使用
-        //Generic<Boolean> booleanGeneric = new Generic<>(true);
+        //Generic<Boolean> booleanGeneric = new GenericTest<>(true);
         //boolean b = booleanGeneric instanceof Generic<Boolean>;
 
         FruitGenerator<Boolean> fruitGenerator1 = new FruitGenerator<>();
@@ -52,7 +52,7 @@ public class MainTest {
         // sonGeneric.getKey().intValue();
         // 错误的泛型使用,与多态进行区别!!!
         // 首先,多态接口中,某Object obj有方法method(Father father) 可以调用 son =new Son();obj.method(son),
-        // 但是,泛型接口中,某Object obj有方法method(Generic<Father> fatherGeneric) 不可以调用 Generic<Son> sonGeneric =new Generic(new Son()); obj.method(sonGeneric),
+        // 但是,泛型接口中,某Object obj有方法method(Generic<Father> fatherGeneric) 不可以调用 GenericTest<Son> sonGeneric =new GenericTest(new Son()); obj.method(sonGeneric),
         //
         // showFatherOnly(sonGeneric);
         // fatherGeneric == sonGeneric;
