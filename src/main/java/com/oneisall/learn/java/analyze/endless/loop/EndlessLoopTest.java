@@ -7,7 +7,7 @@ package com.oneisall.learn.java.analyze.endless.loop;
  * @version : v1 2019/5/29 10:18
  */
 public class EndlessLoopTest {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         while (true) {
             // > /dev/null 2>&1
             //System.out.println("...");
