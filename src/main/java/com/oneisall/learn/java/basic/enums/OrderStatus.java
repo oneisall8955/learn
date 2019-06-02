@@ -1,6 +1,6 @@
 package com.oneisall.learn.java.basic.enums;
 
-import com.oneisall.learn.java.common.CommonResult;
+import com.oneisall.learn.java.common.Result;
 
 import java.util.*;
 
@@ -81,17 +81,17 @@ public enum OrderStatus implements AllowOperate<UserType, Operation> {
      * @return
      */
     @Override
-    public CommonResult allowOperate(UserType userType, Operation operation) {
+    public Result allowOperate(UserType userType, Operation operation) {
         if (operation == null || userType == null) {
-            return CommonResult.failed("异常操作,操作或操作者无效,operation:[" + operation + "],userType:[" + userType + "]");
+            return Result.failed("异常操作,操作或操作者无效,operation:[" + operation + "],userType:[" + userType + "]");
         }
         Set<Operation> allowSet = allowOperateSetting.get(userType);
         if (allowSet == null || allowSet.isEmpty()) {
-            return CommonResult.failed("禁止操作,订单状态:[" + text + "],角色:[" + userType.text + "],操作:[" + operation.text + "]");
+            return Result.failed("禁止操作,订单状态:[" + text + "],角色:[" + userType.text + "],操作:[" + operation.text + "]");
         }
         boolean allow = allowSet.contains(operation);
-        CommonResult success = CommonResult.success("允许操作,订单状态:[" + text + "],角色:[" + userType.text + "],操作:[" + operation.text + "]");
-        CommonResult failed = CommonResult.failed("禁止操作,订单状态:[" + text + "],角色:[" + userType.text + "],操作:[" + operation.text + "]");
+        Result success = Result.success("允许操作,订单状态:[" + text + "],角色:[" + userType.text + "],操作:[" + operation.text + "]");
+        Result failed = Result.failed("禁止操作,订单状态:[" + text + "],角色:[" + userType.text + "],操作:[" + operation.text + "]");
         return allow ? success : failed;
     }
 }

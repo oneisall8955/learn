@@ -1,6 +1,6 @@
 package com.oneisall.learn.java.basic.enums;
 
-import com.oneisall.learn.java.common.CommonResult;
+import com.oneisall.learn.java.common.Result;
 import com.sun.deploy.util.StringUtils;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -129,7 +129,7 @@ public class MainTest {
             for (UserType userType : userTypes) {
                 List<Operation> allowOptionList = new ArrayList<>();
                 for (Operation operation : operations) {
-                    CommonResult result = status.allowOperate(userType, operation);
+                    Result result = status.allowOperate(userType, operation);
                     System.out.println(result.getMsg());
                     if (result.isStatus()) {
                         allowOptionList.add(operation);

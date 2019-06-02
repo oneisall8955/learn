@@ -6,14 +6,14 @@ package com.oneisall.learn.java.common;
  * <p>example:</p>
  * <blockquote><pre>
  *      UserInfo user = new UserInfo();
- *       CommonResult<UserInfo> result = CommonResult.success("aaa", user);
+ *       Result<UserInfo> result = Result.success("aaa", user);
  *       UserInfo data = result.getData();
  *       assert user == data;
  *  </pre></blockquote>
  * @author oneisall
  * @version v1 2019/4/12 18:02
  */
-public class CommonResult<T> {
+public class Result<T> {
 
     /**
      * 状态码,标志请求成功与否,与业务无关,备用字段
@@ -43,7 +43,7 @@ public class CommonResult<T> {
     private T data;
 
     @SuppressWarnings("unused")
-    private CommonResult() {
+    private Result() {
 
     }
 
@@ -52,7 +52,7 @@ public class CommonResult<T> {
      *
      * @return 原对象
      */
-    public CommonResult failed() {
+    public Result makeFailed() {
         this.status = false;
         return this;
     }
@@ -62,7 +62,7 @@ public class CommonResult<T> {
      *
      * @return 原对象
      */
-    public CommonResult success() {
+    public Result makeSuccess() {
         this.status = true;
         return this;
     }
@@ -72,7 +72,7 @@ public class CommonResult<T> {
      *
      * @return 原对象
      */
-    public CommonResult error() {
+    public Result error() {
         return error(500);
     }
 
@@ -81,41 +81,47 @@ public class CommonResult<T> {
      *
      * @return 原对象
      */
-    @SuppressWarnings("all")
-    public CommonResult error(int code) {
+    public Result error(int code) {
         this.status = false;
         this.code = code;
         return this;
     }
 
-    private CommonResult(boolean status, String msg, T data) {
+    private Result(boolean status, String msg, T data) {
         this.status = status;
         this.msg = msg;
         this.data = data;
     }
 
-    @SuppressWarnings("all")
-    public static <T> CommonResult<T> build(boolean status, String msg, T data) {
-        return new CommonResult<>(status, msg, data);
+    public static <T> Result<T> build(boolean status, String msg, T data) {
+        return new Result<>(status, msg, data);
     }
 
     //success
 
-    public static <T> CommonResult<T> success(String msg, T data) {
+    public static <T> Result<T> success(String msg, T data) {
         return build(true, msg, data);
     }
 
-    public static <T> CommonResult<T> success(String msg) {
+    public static <T> Result<T> success(T data) {
+        return build(true, "成功!", data);
+    }
+
+    public static <T> Result<T> success(String msg) {
         return build(true, msg, null);
+    }
+
+    public static <T> Result<T> success() {
+        return build(true, null, null);
     }
 
     //failed
 
-    public static <T> CommonResult<T> failed(String msg, T data) {
+    public static <T> Result<T> failed(String msg, T data) {
         return build(false, msg, data);
     }
 
-    public static <T> CommonResult<T> failed(String msg) {
+    public static <T> Result<T> failed(String msg) {
         return build(false, msg, null);
     }
 
@@ -149,5 +155,27 @@ public class CommonResult<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    @SuppressWarnings("all")
+    //@JsonIgnore
+    public boolean isSuccess() {
+        return status;
+    }
+
+    @SuppressWarnings("all")
+    //@JsonIgnore
+    public boolean isFailed() {
+        return !status;
+    }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "code=" + code +
+                ", status=" + status +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

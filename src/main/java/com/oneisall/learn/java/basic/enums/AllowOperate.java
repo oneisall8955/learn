@@ -1,6 +1,6 @@
 package com.oneisall.learn.java.basic.enums;
 
-import com.oneisall.learn.java.common.CommonResult;
+import com.oneisall.learn.java.common.Result;
 
 /**
  * 整合状态,角色,操作权限
@@ -18,5 +18,5 @@ public interface AllowOperate<KEY1,KEY2> {
      * @param key2 第二个KEY
      * @return 是否允许操作
      */
-    CommonResult allowOperate(KEY1 key1, KEY2 key2);
+    Result allowOperate(KEY1 key1, KEY2 key2);
 }
