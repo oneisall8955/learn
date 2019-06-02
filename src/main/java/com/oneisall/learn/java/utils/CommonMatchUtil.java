@@ -18,7 +18,7 @@ public class CommonMatchUtil {
 
     /**
      * 重写stream类中的anyMatch,
-     * 有一个匹配成功则返回成功,且包含这个成功的元素,
+     * 有一个匹配成功则返回成功,且包含导致成功的元素,
      * 否则返回失败,提示没有一个元素匹配
      *
      * @param collection 匹配集合
@@ -39,7 +39,7 @@ public class CommonMatchUtil {
     /**
      * 重写stream类中的allMatch,
      * 必须所有元素都要匹配成功才返回成功,提示所有元素均匹配,
-     * 否则返回失败,且包含这个失败的元素
+     * 否则返回失败,且包含导致失败的元素
      *
      * @param collection 匹配集合
      * @param predicate  条件
@@ -59,7 +59,7 @@ public class CommonMatchUtil {
     /**
      * 重写stream类中的noneMatch,
      * 必须所有元素都要不匹配成功才返回成功,提示所有元素均不匹配,
-     * 否则返回失败,且包含这个失败的元素
+     * 否则返回失败,且包含导致失败的元素
      *
      * @param collection 匹配集合
      * @param predicate  条件
