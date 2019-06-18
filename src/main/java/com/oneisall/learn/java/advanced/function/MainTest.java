@@ -1,9 +1,12 @@
 package com.oneisall.learn.java.advanced.function;
 
+import com.oneisall.learn.java.common.Result;
 import org.junit.Test;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -90,31 +93,56 @@ public class MainTest {
      */
     @Test
     public void PredicateTest() {
-
-        Predicate<Integer> predicate = (integer) -> {
+        Predicate<Integer> original = (integer) -> {
             return integer != null && integer > 1;
         };
         //false
-        boolean test = predicate.test(0);
-        System.out.println(test);
+        boolean test = original.test(0);
+        System.out.println("original predicate test(x > 1):" + test);
         System.out.println("-------------");
 
-        Predicate<Integer> orPredicate = predicate.or(integer -> integer != null && integer < -1);
+        Predicate<Integer> other;
+        other = integer -> integer != null && integer < -1;
+        Predicate<Integer> orPredicate = original.or(other);
         //false
         boolean orTest = orPredicate.test(0);
-        System.out.println(orTest);
+        System.out.println("or predicate test(x > 1 || x < -1):" + orTest);
         System.out.println("-------------");
 
-        Predicate<Integer> andPredicate = predicate.and(integer -> {
-            return integer != null && integer < 10;
-        });
+        other = integer -> integer != null && integer < 10;
+        Predicate<Integer> andPredicate = original.and(other);
         //true
         boolean andTest = andPredicate.test(5);
-        System.out.println(andTest);
+        System.out.println("and predicate test(x > 1 && x < 10):" + andTest);
         System.out.println("-------------");
-
-
     }
 
 
+    @Test
+    public void FunctionTest() {
+        Function<Integer, String> original = (integer) -> {
+            return integer + "->" + (integer + 1);
+        };
+        String originalResult = original.apply(100);
+        System.out.println(originalResult);
+        System.out.println("-------------");
+
+        Function<String, Result> after;
+        after = originalFunctionValue -> Result.success(originalFunctionValue + "->" + "!!!");
+        Function<Integer, Result> andThen = original.andThen(after);
+        Result andThenResult = andThen.apply(100);
+        System.out.println(andThenResult.getMsg());
+        System.out.println("-------------");
+
+        Function<String, Integer> before = string -> Optional.ofNullable(string).map(String::length).orElse(0);
+        Function<String, String> compose = original.compose(before);
+        String composeResult = compose.apply("10086");
+        System.out.println(composeResult);
+        System.out.println("-------------");
+
+        Function<String, String> identity = Function.identity();
+        String haha = identity.apply("haha");
+        System.out.println(haha);
+        System.out.println("-------------");
+    }
 }
