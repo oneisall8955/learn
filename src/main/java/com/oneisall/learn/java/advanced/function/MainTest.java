@@ -115,7 +115,11 @@ public class MainTest {
         System.out.println("-------------");
     }
 
-
+    /**
+     * Function
+     * R apply(T t) 接口,定义一个接受T类型的方法,经过执行运算,返回类型为R的结果
+     * 调用apply(t) 进行执行并返回结果
+     */
     @Test
     public void FunctionTest() {
         Function<Integer, String> original = (integer) -> {
