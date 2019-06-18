@@ -5,10 +5,7 @@ import org.junit.Test;
 
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 /**
  * 函数学习
@@ -155,5 +152,10 @@ public class MainTest {
         System.out.println("-------------");
     }
 
-
+    @Test
+    public void UnaryOperatorTest() {
+        UnaryOperator<String> original = input -> input + "->" + input;
+        Function<String, String> specialOriginal = original;
+        //function ...
+    }
 }
