@@ -3,7 +3,6 @@ package com.oneisall.learn.java.utils;
 
 import com.oneisall.learn.java.common.Result;
 
-import java.util.Collection;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -27,7 +26,7 @@ public class CommonMatchUtil {
      * @return 是否匹配成功
      * @see Stream#anyMatch(Predicate)
      */
-    public static <T> Result<T> anyMatch(Collection<T> collection, Predicate<T> predicate) {
+    public static <T> Result<T> anyMatch(Iterable<T> collection, Predicate<T> predicate) {
         for (T t : collection) {
             if (predicate.test(t)) {
                 return Result.success("匹配到符合的第一个元素!", t);
@@ -47,7 +46,7 @@ public class CommonMatchUtil {
      * @return 是否匹配成功
      * @see Stream#allMatch(Predicate)
      */
-    public static <T> Result<T> allMatch(Collection<T> collection, Predicate<T> predicate) {
+    public static <T> Result<T> allMatch(Iterable<T> collection, Predicate<T> predicate) {
         for (T t : collection) {
             if (!predicate.test(t)) {
                 return Result.failed("存在一个元素不匹配!", t);
@@ -67,7 +66,7 @@ public class CommonMatchUtil {
      * @return 是否匹配成功
      * @see Stream#allMatch(Predicate)
      */
-    public static <T> Result<T> noneMatch(Collection<T> collection, Predicate<T> predicate) {
+    public static <T> Result<T> noneMatch(Iterable<T> collection, Predicate<T> predicate) {
         for (T t : collection) {
             if (predicate.test(t)) {
                 return Result.failed("存在一个元素匹配!", t);
