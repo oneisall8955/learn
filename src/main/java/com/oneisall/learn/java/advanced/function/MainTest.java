@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
  * 函数学习
@@ -134,7 +135,7 @@ public class MainTest {
         System.out.println(andThenResult.getMsg());
         System.out.println("-------------");
 
-        Function<String, Integer> before = string -> Optional.ofNullable(string).map(String::length).orElse(0);
+        Function<String, Integer> before = input -> Optional.ofNullable(input).map(String::length).orElse(0);
         Function<String, String> compose = original.compose(before);
         String composeResult = compose.apply("10086");
         System.out.println(composeResult);
@@ -145,4 +146,14 @@ public class MainTest {
         System.out.println(haha);
         System.out.println("-------------");
     }
+
+    @Test
+    public void SupplierTest() {
+        Supplier<String> original = () -> "a value";
+        String originalResult = original.get();
+        System.out.println(originalResult);
+        System.out.println("-------------");
+    }
+
+
 }
