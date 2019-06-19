@@ -116,9 +116,23 @@ public class MainTest {
     }
 
     /**
-     * Function
+     * Function<T,R>
      * R apply(T t) 接口,定义一个接受T类型的方法,经过执行运算,返回类型为R的结果
      * 调用apply(t) 进行执行并返回结果
+     *
+     * andThen(Function<? super R, ? extends V> after),
+     * original函数接受一个after函数,返回一个新的andThen函数,新的函数的输入类型为original输入类型,输出类型为after的输出类型
+     * (注:after函数必须是以original的结果类型R为after输入类型!!! after函数输出结果类型V将作为新函数的输出结果类型),
+     * 新的函数andThen.apply(t)时,逻辑为:调用original处理T t得出中间结果R r,再将中间结果r作为after的输入,得到最终结果V v
+     *
+     * compose(Function<? super V, ? extends T> before),
+     * original函数接受一个before函数,返回一个新的compose函数,新的函数的输入类型为before输入类型,输出类型为compose的输出类型
+     * (注:before函数必须是以original的输入类型T为after输入类型!!! before函数输入结果类型V将作为新函数的输入结果类型),
+     * 新的函数compose.apply(v)时,逻辑为:调用before处理V v得出中间结果T t,再将中间结果t作为original的输入,得到最终结果R r
+     *
+     * static <T> identity()
+     * 返回输出等于输入的特殊函数,输出与输入的类型必须相同!
+     *
      */
     @Test
     public void FunctionTest() {
@@ -148,6 +162,11 @@ public class MainTest {
         System.out.println("-------------");
     }
 
+    /**
+     * Supplier<T>
+     * T get() 定义一个不接收值得方法,经过执行运算,返回类型为T的结果
+     * 调用get() 进行执行并返回结果
+     */
     @Test
     public void SupplierTest() {
         Supplier<String> original = () -> "a value";
@@ -156,6 +175,10 @@ public class MainTest {
         System.out.println("-------------");
     }
 
+    /**
+     * UnaryOperator<T>
+     * UnaryOperator作为继承Function接口操作,限定了Function输出输入格式必须是相同得,是一个特殊类型得函数,
+     */
     @Test
     public void UnaryOperatorTest() {
         UnaryOperator<String> original = input -> input + "->" + input;
