@@ -79,7 +79,7 @@ echo -e "${green}rename ${war_file_name}  to ROOT.war ...${end}"
 if [ ${war_file_name} != 'ROOT.war' ]; then
     mv ${war_file_name} "ROOT.war"
     war_file_name="ROOT.war"
-    war_file_path="${current_path}/${war_file_name}"
+    war_file_path="${jenkins_project_war_dir_path}/${war_file_name}"
     echo -e "${green}rename finish${end}"
 else
     echo -e "${yellow}the war file's name :${war_file_name} equals 'ROOT.war',no need to rename${end}"
