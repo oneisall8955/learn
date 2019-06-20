@@ -103,6 +103,9 @@ else
 fi
 #remove old backup files,keep 5 backup files up to date
 ls -t | grep 'ROOT.war_' | awk 'NR>5{print "rm -rf " $0}' | xargs rm -rf
+#保留最新的五份备份文件
+echo -e "${green}all backup files :${end}"
+ls -l | grep 'ROOT.war_'
 echo ""
 
 #4.cp
