@@ -101,7 +101,8 @@ else
     mv ROOT.war "./ROOT.war_${nowTime}"
     echo -e "${green}backup finish${end}"
 fi
-#TODO remove old backup files,keep 5 backup files up to date
+#remove old backup files,keep 5 backup files up to date
+ls -t | grep 'ROOT.war_' | awk 'NR>5{print "rm -rf " $0}' | xargs rm -rf
 echo ""
 
 #4.cp
