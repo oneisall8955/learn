@@ -10,5 +10,9 @@
  * <a href="https://mp.weixin.qq.com/s?__biz=MzU5NTg2NTI0OA==&mid=2247483772&idx=1&sn=03d2db88210697186edd36ef6bb176ea">
  * 秉心说:钻钻 “单例” 的牛角尖
  * </a>
+ * 参考文章 3:
+ * <a href="https://www.cnblogs.com/a154627/p/10046147.html">
+ * 154627727:传统单例模式双重检查锁存在的问题
+ * </a>
  */
 package com.oneisall.learn.universal.design.pattern.singleton;
