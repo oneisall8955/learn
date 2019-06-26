@@ -6,24 +6,22 @@ import com.oneisall.learn.universal.design.pattern.strategy.service.HeroService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
-
+/**
+ * 英雄业务实现
+ *
+ * @author oneisall
+ */
 public class HeroServiceImpl implements HeroService {
 
     @Override
     public List<Hero> findHero(List<Hero> heroList, Predicate<Hero> predicate) {
-        List<Hero> result = new ArrayList<Hero>();
         if (heroList == null || heroList.size() == 0) {
-            return result;
+            return new ArrayList<>();
         }
-        heroList.forEach(hero -> {
-            if (predicate.test(hero)) {
-                result.add(hero);
-            }
-        });
-
-        return result;
+        return heroList.stream().filter(predicate::test).collect(Collectors.toList());
     }
 
 }

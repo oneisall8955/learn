@@ -1,8 +1,8 @@
 package com.oneisall.learn.universal.design.pattern.decorator.wrapper;
 
 
-import com.oneisall.learn.universal.design.pattern.decorator.Programmer;
-import com.oneisall.learn.universal.design.pattern.decorator.ProgrammerDecorator;
+import com.oneisall.learn.universal.design.pattern.decorator.Profession;
+import com.oneisall.learn.universal.design.pattern.decorator.AbstractProfessionDecorator;
 
 /**
  * 数据库工程师
@@ -10,10 +10,10 @@ import com.oneisall.learn.universal.design.pattern.decorator.ProgrammerDecorator
  * @author oneisall
  * @version v1 2018/9/10 10:01
  */
-public class DbProgrammer extends ProgrammerDecorator {
+public class DbProfession extends AbstractProfessionDecorator {
 
-    public DbProgrammer(Programmer programmer) {
-        super(programmer);
+    public DbProfession(Profession profession) {
+        super(profession);
     }
 
     @Override

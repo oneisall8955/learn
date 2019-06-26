@@ -1,10 +1,10 @@
 package com.oneisall.learn.universal.design.pattern.decorator;
 
 
-import com.oneisall.learn.universal.design.pattern.decorator.wrapper.DbProgrammer;
-import com.oneisall.learn.universal.design.pattern.decorator.wrapper.JavaProgrammer;
-import com.oneisall.learn.universal.design.pattern.decorator.wrapper.LinuxProgrammer;
-import com.oneisall.learn.universal.design.pattern.decorator.wrapper.UIProgrammer;
+import com.oneisall.learn.universal.design.pattern.decorator.wrapper.DbProfession;
+import com.oneisall.learn.universal.design.pattern.decorator.wrapper.JavaProfession;
+import com.oneisall.learn.universal.design.pattern.decorator.wrapper.LinuxProfession;
+import com.oneisall.learn.universal.design.pattern.decorator.wrapper.FrontEndProfession;
 
 /**
  * 测试
@@ -16,19 +16,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Coder xiaoming = new Coder("小明");
-        Programmer xmProgrammer = new JavaProgrammer(new OriginalProgrammer());
-        xiaoming.setProgrammer(xmProgrammer);
-        xiaoming.introduce();
+        Coder ming = new Coder("小明");
+        Profession xmProfession = new JavaProfession(new OriginalProfession());
+        ming.setProfession(xmProfession);
+        ming.introduce();
 
-        Coder xiaohua = new Coder("小华");
-        Programmer xhProgrammer = new LinuxProgrammer(new DbProgrammer(new OriginalProgrammer()));
-        xiaohua.setProgrammer(xhProgrammer);
-        xiaohua.introduce();
+        Coder hua = new Coder("小华");
+        Profession xhProfession = new LinuxProfession(new DbProfession(new OriginalProfession()));
+        hua.setProfession(xhProfession);
+        hua.introduce();
 
         Coder god = new Coder("大神");
-        Programmer godProgrammer = new JavaProgrammer(new UIProgrammer(new LinuxProgrammer(new DbProgrammer(new OriginalProgrammer()))));
-        god.setProgrammer(godProgrammer);
+        Profession godProfession = new JavaProfession(new FrontEndProfession(new LinuxProfession(new DbProfession(new OriginalProfession()))));
+        god.setProfession(godProfession);
         god.introduce();
 
     }

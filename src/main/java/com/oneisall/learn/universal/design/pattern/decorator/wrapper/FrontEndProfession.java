@@ -1,8 +1,8 @@
 package com.oneisall.learn.universal.design.pattern.decorator.wrapper;
 
 
-import com.oneisall.learn.universal.design.pattern.decorator.Programmer;
-import com.oneisall.learn.universal.design.pattern.decorator.ProgrammerDecorator;
+import com.oneisall.learn.universal.design.pattern.decorator.Profession;
+import com.oneisall.learn.universal.design.pattern.decorator.AbstractProfessionDecorator;
 
 /**
  * 前端UI工程师
@@ -10,10 +10,10 @@ import com.oneisall.learn.universal.design.pattern.decorator.ProgrammerDecorator
  * @author oneisall
  * @version v1 2018/9/10 10:01
  */
-public class UIProgrammer extends ProgrammerDecorator {
+public class FrontEndProfession extends AbstractProfessionDecorator {
 
-    public UIProgrammer(Programmer programmer) {
-        super(programmer);
+    public FrontEndProfession(Profession profession) {
+        super(profession);
     }
 
     @Override

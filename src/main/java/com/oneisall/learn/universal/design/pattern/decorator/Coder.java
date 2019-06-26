@@ -1,32 +1,34 @@
 package com.oneisall.learn.universal.design.pattern.decorator;
 
 /**
- * TODO :please describe it in one sentence
+ * 码农
  *
  * @author oneisall
  * @version v1 2018/9/10 10:21
  */
 public class Coder {
 
-    String name;
-    Programmer programmer;
+    /** 码农姓名*/
+    private String name;
+    /** 职业技能*/
+    private Profession profession;
 
-    public Coder(String name) {
+    Coder(String name) {
         this.name = name;
     }
 
-    public Coder(String name, Programmer programmer) {
+    public Coder(String name, Profession profession) {
         this.name = name;
-        this.programmer = programmer;
+        this.profession = profession;
     }
 
-    public void introduce() {
-        int salary = programmer.salary();
-        String skill = programmer.skill();
+    void introduce() {
+        int salary = profession.salary();
+        String skill = profession.skill();
         System.out.println("我叫"+name+"，我会"+skill+"，我的理想薪水："+salary);
     }
 
-    public void setProgrammer(Programmer programmer) {
-        this.programmer = programmer;
+    void setProfession(Profession profession) {
+        this.profession = profession;
     }
 }

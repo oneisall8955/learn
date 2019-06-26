@@ -1,6 +1,5 @@
 package com.oneisall.learn.universal.design.pattern.strategy;
 
-import com.oneisall.learn.universal.design.pattern.strategy.common.Predicate;
 import com.oneisall.learn.universal.design.pattern.strategy.domain.Hero;
 import com.oneisall.learn.universal.design.pattern.strategy.domain.Hero.HeroType;
 import com.oneisall.learn.universal.design.pattern.strategy.service.impl.HeroServiceImpl;
@@ -13,9 +12,8 @@ import java.util.List;
 
 
 /**
- * @version 1.0
+ * @author oneisall
  */
-@SuppressWarnings("all")
 public class Main {
 
     public static void main(String[] args) {
@@ -54,17 +52,9 @@ public class Main {
         System.out.println(statureHeroList);
         System.out.println(tsHeroList);
 
-        List<Hero> customHeroList = heroService.findHero(heroList, new Predicate<Hero>() {
-
-            @Override
-            public boolean test(Hero t) {
-                return Hero.HeroType.assassin.equals(t.getType()) && t.getStature() > 170 && "刺客70".equals(t.getName());
-            }
-        });
+        List<Hero> customHeroList = heroService.findHero(heroList, t -> HeroType.assassin.equals(t.getType()) && t.getStature() > 170 && "刺客70".equals(t.getName()));
         System.out.println(customHeroList);
 
-        List<Hero> lambdaHeroList = heroService.findHero(heroList, t-> Hero.HeroType.assassin.equals(t.getType()) && t.getStature() > 170 && "刺客71".equals(t.getName()));
-        System.out.println(lambdaHeroList);
     }
 
 }

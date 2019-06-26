@@ -1,9 +1,16 @@
 package com.oneisall.learn.universal.design.pattern.strategy.domain;
 
+/**
+ * 英雄
+ * @author oneisall
+ */
 public class Hero {
 
+    /** 英雄类型*/
     private HeroType type;
+    /** 身高*/
     private double stature;
+    /** 名字*/
     private String name;
 
     public Hero(HeroType type, double stature, String name) {
@@ -42,11 +49,11 @@ public class Hero {
         return "Hero [type=" + type + "(" + type.text + "), stature=" + stature + ", name=" + name + "]";
     }
 
-    public static enum HeroType {
+    public enum HeroType {
         assassin("刺客"), shooter("射手"), saber("剑士");
         public String text;
 
-        private HeroType(String text) {
+        HeroType(String text) {
             this.text = text;
         }
     }
