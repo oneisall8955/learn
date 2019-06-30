@@ -4,6 +4,8 @@ import com.oneisall.learn.universal.design.pattern.factory.abstraction.Factory;
 import com.oneisall.learn.universal.design.pattern.factory.car.Car;
 import com.oneisall.learn.universal.design.pattern.factory.ship.Ship;
 
+import java.lang.reflect.Method;
+
 /**
  * 自动化工厂
  *
@@ -26,6 +28,22 @@ public class CommFactory implements Factory {
         commFactory.carPackageName = basePackName + ".car." + brandFix + "Car";
         commFactory.shipPackageName = basePackName + ".ship." + brandFix + "Ship";
         return commFactory;
+    }
+
+    public static Factory getInstanceNotRecommend(String brand) {
+        String brandFix = brand.substring(0, 1).toUpperCase() + brand.substring(1).toLowerCase();
+        String basePackName = "com.oneisall.learn.universal.design.pattern.factory.abstraction";
+        String factoryPackageName = basePackName + "." + brandFix + "Factory";
+        Factory factory = null;
+        try {
+            Class<?> factoryClass = Class.forName(factoryPackageName);
+            Method method = factoryClass.getDeclaredMethod("getInstance");
+            Object invoke = method.invoke(null);
+            factory = (Factory) invoke;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return factory;
     }
 
     @Override

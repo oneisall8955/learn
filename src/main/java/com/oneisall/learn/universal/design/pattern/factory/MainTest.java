@@ -104,7 +104,20 @@ public class MainTest {
         List<String> brandList = Lists.newArrayList("BWM", "HONDA", "BENZ");
         //模拟接口动态业务方法
         String brand = brandList.get(random.nextInt(brandList.size()));
-        CommFactory commFactory = CommFactory.getInstance(brand);
+        Factory factory = CommFactory.getInstanceNotRecommend(brand);
+        Car car = factory.createCar();
+        car.run();
+        Ship ship = factory.createShip();
+        ship.drive();
+    }
+
+    @Test
+    public void abstractFactoryImprove05Test() {
+        Random random = new Random();
+        List<String> brandList = Lists.newArrayList("BWM", "HONDA", "BENZ");
+        //模拟接口动态业务方法
+        String brand = brandList.get(random.nextInt(brandList.size()));
+        Factory commFactory = CommFactory.getInstance(brand);
         Car car = commFactory.createCar();
         car.run();
         Ship ship = commFactory.createShip();
