@@ -7,7 +7,7 @@ import com.oneisall.learn.universal.design.pattern.factory.ship.Ship;
 import java.lang.reflect.Method;
 
 /**
- * 自动化工厂
+ * 自动化工厂,个人认为开发中最合适的方式
  *
  * @author : oneisall
  * @version : v1 2019/6/30 17:44
