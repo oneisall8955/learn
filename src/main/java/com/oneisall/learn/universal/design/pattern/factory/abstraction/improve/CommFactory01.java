@@ -26,7 +26,6 @@ public class CommFactory01 {
             case "BENZ":
                 car = new BenzCar();
                 break;
-
             case "HONDA":
                 car = new HondaCar();
                 break;
@@ -46,7 +45,6 @@ public class CommFactory01 {
             case "BENZ":
                 ship = new BenzShip();
                 break;
-
             case "HONDA":
                 ship = new HondaShip();
                 break;
