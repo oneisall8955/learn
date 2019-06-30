@@ -1,9 +1,14 @@
 package com.oneisall.learn.universal.design.pattern.factory;
 
+import com.google.common.collect.Lists;
 import com.oneisall.learn.universal.design.pattern.factory.abstraction.BenzFactory;
 import com.oneisall.learn.universal.design.pattern.factory.abstraction.BwmFactory;
 import com.oneisall.learn.universal.design.pattern.factory.abstraction.Factory;
 import com.oneisall.learn.universal.design.pattern.factory.abstraction.HondaFactory;
+import com.oneisall.learn.universal.design.pattern.factory.abstraction.improve.CommFactory;
+import com.oneisall.learn.universal.design.pattern.factory.abstraction.improve.CommFactory01;
+import com.oneisall.learn.universal.design.pattern.factory.abstraction.improve.CommFactory02;
+import com.oneisall.learn.universal.design.pattern.factory.abstraction.improve.CommFactory03;
 import com.oneisall.learn.universal.design.pattern.factory.car.Car;
 import com.oneisall.learn.universal.design.pattern.factory.car.CarBrand;
 import com.oneisall.learn.universal.design.pattern.factory.general.BenzCarFactory;
@@ -12,6 +17,9 @@ import com.oneisall.learn.universal.design.pattern.factory.general.HondaCarFacto
 import com.oneisall.learn.universal.design.pattern.factory.ship.Ship;
 import com.oneisall.learn.universal.design.pattern.factory.simple.SimpleCarFactory;
 import org.junit.Test;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * 工厂模式测试
@@ -64,5 +72,42 @@ public class MainTest {
         hondaCar.run();
         Ship hondaShip = hondaInstance.createShip();
         hondaShip.drive();
+    }
+
+    @Test
+    public void abstractFactoryImprove01Test() {
+        Car car = CommFactory01.createCar();
+        car.run();
+        Ship ship = CommFactory01.createShip();
+        ship.drive();
+    }
+
+    @Test
+    public void abstractFactoryImprove02Test() {
+        Car car = CommFactory02.createCar();
+        car.run();
+        Ship ship = CommFactory02.createShip();
+        ship.drive();
+    }
+
+    @Test
+    public void abstractFactoryImprove03Test() {
+        Car car = CommFactory03.createCar();
+        car.run();
+        Ship ship = CommFactory03.createShip();
+        ship.drive();
+    }
+
+    @Test
+    public void abstractFactoryImprove04Test() {
+        Random random = new Random();
+        List<String> brandList = Lists.newArrayList("BWM", "HONDA", "BENZ");
+        //模拟接口动态业务方法
+        String brand = brandList.get(random.nextInt(brandList.size()));
+        CommFactory commFactory = CommFactory.getInstance(brand);
+        Car car = commFactory.createCar();
+        car.run();
+        Ship ship = commFactory.createShip();
+        ship.drive();
     }
 }
