@@ -1,4 +1,4 @@
-package com.oneisall.learn.universal.design.pattern.factory.impl;
+package com.oneisall.learn.universal.design.pattern.factory;
 
 import com.oneisall.learn.universal.design.pattern.factory.Car;
 

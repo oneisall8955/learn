@@ -2,9 +2,9 @@ package com.oneisall.learn.universal.design.pattern.factory.simple;
 
 import com.oneisall.learn.universal.design.pattern.factory.Car;
 import com.oneisall.learn.universal.design.pattern.factory.CarBrand;
-import com.oneisall.learn.universal.design.pattern.factory.impl.BenzCar;
-import com.oneisall.learn.universal.design.pattern.factory.impl.BwmCar;
-import com.oneisall.learn.universal.design.pattern.factory.impl.HondaCar;
+import com.oneisall.learn.universal.design.pattern.factory.BenzCar;
+import com.oneisall.learn.universal.design.pattern.factory.BwmCar;
+import com.oneisall.learn.universal.design.pattern.factory.HondaCar;
 
 /**
  * 简单工厂模式

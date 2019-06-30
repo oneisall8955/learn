@@ -1,5 +1,8 @@
 package com.oneisall.learn.universal.design.pattern.factory;
 
+import com.oneisall.learn.universal.design.pattern.factory.general.BenzCarFactory;
+import com.oneisall.learn.universal.design.pattern.factory.general.BwmCarFactory;
+import com.oneisall.learn.universal.design.pattern.factory.general.HondaCarFactory;
 import com.oneisall.learn.universal.design.pattern.factory.simple.SimpleCarFactory;
 import org.junit.Test;
 
@@ -18,6 +21,16 @@ public class MainTest {
         Car benzCar = SimpleCarFactory.createCar(CarBrand.BENZ);
         benzCar.run();
         Car hondaCar = SimpleCarFactory.createCar(CarBrand.HONDA);
+        hondaCar.run();
+    }
+
+    @Test
+    public void generalFactoryTest() {
+        Car bmwCar = BwmCarFactory.getInstance().createCar();
+        bmwCar.run();
+        Car benzCar = BenzCarFactory.getInstance().createCar();
+        benzCar.run();
+        Car hondaCar = HondaCarFactory.getInstance().createCar();
         hondaCar.run();
     }
 }
