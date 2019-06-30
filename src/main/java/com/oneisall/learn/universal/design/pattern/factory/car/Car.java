@@ -1,4 +1,4 @@
-package com.oneisall.learn.universal.design.pattern.factory;
+package com.oneisall.learn.universal.design.pattern.factory.car;
 
 /**
  * 汽车

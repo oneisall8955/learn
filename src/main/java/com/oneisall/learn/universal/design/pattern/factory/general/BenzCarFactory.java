@@ -1,7 +1,7 @@
 package com.oneisall.learn.universal.design.pattern.factory.general;
 
-import com.oneisall.learn.universal.design.pattern.factory.BenzCar;
-import com.oneisall.learn.universal.design.pattern.factory.Car;
+import com.oneisall.learn.universal.design.pattern.factory.car.BenzCar;
+import com.oneisall.learn.universal.design.pattern.factory.car.Car;
 
 /**
  * 奔驰车工厂

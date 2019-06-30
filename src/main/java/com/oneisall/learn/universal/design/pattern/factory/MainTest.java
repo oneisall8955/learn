@@ -1,8 +1,15 @@
 package com.oneisall.learn.universal.design.pattern.factory;
 
+import com.oneisall.learn.universal.design.pattern.factory.abstraction.BenzFactory;
+import com.oneisall.learn.universal.design.pattern.factory.abstraction.BwmFactory;
+import com.oneisall.learn.universal.design.pattern.factory.abstraction.Factory;
+import com.oneisall.learn.universal.design.pattern.factory.abstraction.HondaFactory;
+import com.oneisall.learn.universal.design.pattern.factory.car.Car;
+import com.oneisall.learn.universal.design.pattern.factory.car.CarBrand;
 import com.oneisall.learn.universal.design.pattern.factory.general.BenzCarFactory;
 import com.oneisall.learn.universal.design.pattern.factory.general.BwmCarFactory;
 import com.oneisall.learn.universal.design.pattern.factory.general.HondaCarFactory;
+import com.oneisall.learn.universal.design.pattern.factory.ship.Ship;
 import com.oneisall.learn.universal.design.pattern.factory.simple.SimpleCarFactory;
 import org.junit.Test;
 
@@ -32,5 +39,30 @@ public class MainTest {
         benzCar.run();
         Car hondaCar = HondaCarFactory.getInstance().createCar();
         hondaCar.run();
+    }
+
+    @Test
+    public void abstractFactoryTest() {
+        Factory bwmInstance = BwmFactory.getInstance();
+        Car bmwCar = bwmInstance.createCar();
+        bmwCar.run();
+        Ship bmwShip = bwmInstance.createShip();
+        bmwShip.drive();
+
+        System.out.println("-------------");
+
+        Factory benzInstance = BenzFactory.getInstance();
+        Car benzCar = benzInstance.createCar();
+        benzCar.run();
+        Ship benzShip = benzInstance.createShip();
+        benzShip.drive();
+
+        System.out.println("-------------");
+
+        Factory hondaInstance = HondaFactory.getInstance();
+        Car hondaCar = hondaInstance.createCar();
+        hondaCar.run();
+        Ship hondaShip = hondaInstance.createShip();
+        hondaShip.drive();
     }
 }

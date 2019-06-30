@@ -1,6 +1,6 @@
 package com.oneisall.learn.universal.design.pattern.factory.general;
 
-import com.oneisall.learn.universal.design.pattern.factory.Car;
+import com.oneisall.learn.universal.design.pattern.factory.car.Car;
 
 /**
  * 工厂模式

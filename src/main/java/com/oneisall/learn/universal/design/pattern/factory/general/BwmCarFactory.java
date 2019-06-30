@@ -1,7 +1,7 @@
 package com.oneisall.learn.universal.design.pattern.factory.general;
 
-import com.oneisall.learn.universal.design.pattern.factory.BwmCar;
-import com.oneisall.learn.universal.design.pattern.factory.Car;
+import com.oneisall.learn.universal.design.pattern.factory.car.BwmCar;
+import com.oneisall.learn.universal.design.pattern.factory.car.Car;
 
 /**
  * 宝马车工厂

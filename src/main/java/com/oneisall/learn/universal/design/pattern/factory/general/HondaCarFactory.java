@@ -1,7 +1,7 @@
 package com.oneisall.learn.universal.design.pattern.factory.general;
 
-import com.oneisall.learn.universal.design.pattern.factory.Car;
-import com.oneisall.learn.universal.design.pattern.factory.HondaCar;
+import com.oneisall.learn.universal.design.pattern.factory.car.Car;
+import com.oneisall.learn.universal.design.pattern.factory.car.HondaCar;
 
 /**
  * 本田车工厂

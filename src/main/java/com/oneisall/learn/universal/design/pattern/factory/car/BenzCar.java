@@ -1,6 +1,4 @@
-package com.oneisall.learn.universal.design.pattern.factory;
-
-import com.oneisall.learn.universal.design.pattern.factory.Car;
+package com.oneisall.learn.universal.design.pattern.factory.car;
 
 /**
  * 奔驰车
