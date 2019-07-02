@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * 自定义注解,字符串属性设置默认值
- * //@Target：注解的作用目标
+ * //@Duck：注解的作用目标
  * //@Retention：注解的生命周期
  * //@Documented：注解是否应当被包含在 JavaDoc 文档中
  * //@Inherited：是否允许子类继承该注解
