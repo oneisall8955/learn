@@ -1,4 +1,4 @@
-package com.oneisall.learn.universal.design.pattern.strategy.common;
+package com.oneisall.learn.universal.design.pattern.strategy.example01.common;
 
 /**
  * 断言

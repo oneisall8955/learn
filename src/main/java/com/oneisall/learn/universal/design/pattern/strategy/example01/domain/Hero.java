@@ -1,4 +1,4 @@
-package com.oneisall.learn.universal.design.pattern.strategy.domain;
+package com.oneisall.learn.universal.design.pattern.strategy.example01.domain;
 
 /**
  * 英雄

@@ -1,11 +1,11 @@
-package com.oneisall.learn.universal.design.pattern.strategy;
+package com.oneisall.learn.universal.design.pattern.strategy.example01;
 
-import com.oneisall.learn.universal.design.pattern.strategy.domain.Hero;
-import com.oneisall.learn.universal.design.pattern.strategy.domain.Hero.HeroType;
-import com.oneisall.learn.universal.design.pattern.strategy.service.impl.HeroServiceImpl;
-import com.oneisall.learn.universal.design.pattern.strategy.service.impl.StaturePredicate;
-import com.oneisall.learn.universal.design.pattern.strategy.service.impl.TSPredicate;
-import com.oneisall.learn.universal.design.pattern.strategy.service.impl.TypePredicate;
+import com.oneisall.learn.universal.design.pattern.strategy.example01.domain.Hero;
+import com.oneisall.learn.universal.design.pattern.strategy.example01.domain.Hero.HeroType;
+import com.oneisall.learn.universal.design.pattern.strategy.example01.service.impl.HeroServiceImpl;
+import com.oneisall.learn.universal.design.pattern.strategy.example01.service.impl.StaturePredicate;
+import com.oneisall.learn.universal.design.pattern.strategy.example01.service.impl.TSPredicate;
+import com.oneisall.learn.universal.design.pattern.strategy.example01.service.impl.TypePredicate;
 
 import java.util.ArrayList;
 import java.util.List;
