@@ -38,7 +38,7 @@ public class AuthenticatorTest {
 
     @Test
     public void testAtLeastOneSuccessfulStrategyWithSuccess() {
-        login("classpath:shiro-authenticator-atLeastOne-success.ini");
+        login("classpath:shiro/chapter2/shiro-authenticator-atLeastOne-success.ini");
         Subject subject = SecurityUtils.getSubject();
 
         //得到一个身份集合，其包含了Realm验证成功的身份信息
