@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
  * @author oneisall
  * @version v1 2019/4/11 14:11
  */
+@SuppressWarnings("all")
 public class MainTest {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -98,7 +99,7 @@ public class MainTest {
     }
 
     /**
-     * 设置下限 只能接收Number及Object类
+     * 设置下限 只能接收Father及Object类
      */
     private void showSuperFather(Generic<? super Father> obj) {
         // 只能使用Object的API
