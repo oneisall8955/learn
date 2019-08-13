@@ -195,8 +195,10 @@ public class GenericTest {
         ExtendsClass extendsClass = new ExtendsClass();
         extendsClass.extendsMethod(fruits);
         extendsClass.extendsMethod(apples);
-        // 明显无法调用
+
         List<Object> objects = Lists.newArrayList(new Object());
+        // ERROR
+        // 明显无法调用
         // extendsClass.extendsMethod(objects);
     }
 }
