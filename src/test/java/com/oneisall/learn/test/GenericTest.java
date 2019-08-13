@@ -16,6 +16,10 @@ import java.util.List;
 public class GenericTest {
     class Fruit {
         protected String name = "Fruit";
+
+        public void echo() {
+            System.out.println(name);
+        }
     }
 
     class Apple extends Fruit {
@@ -156,12 +160,11 @@ public class GenericTest {
         // SUCCESS
         // 获取到具体的实例是Apple类型
         Fruit getFruit = extendsFruitPlate.get();
-        if (getFruit instanceof Apple) {
-            System.out.println("ok");
-        }
+        getFruit.echo();
 
         System.out.println("--------------");
 
+        List<Fruit> fruits = Lists.newArrayList(fruit);
         List<Apple> apples = Lists.newArrayList(apple);
         List<? extends Fruit> fruitList = new ArrayList<>(apples);
         // 原理一样,使用List重现
@@ -172,19 +175,11 @@ public class GenericTest {
 
         // SUCCESS:调用 T get(int index)
         Fruit getFruitByList = fruitList.get(0);
-        if (getFruitByList instanceof Apple) {
-            System.out.println("ok");
-        }
+        getFruitByList.echo();
+        System.out.println("--------------");
 
         // 接口测试
-        class temp {
-            public void test() {
-                List<Fruit> fruits = Lists.newArrayList(fruit);
-                extendsMethod(fruits);
-                List<Apple> apples = Lists.newArrayList(apple);
-                extendsMethod(apples);
-            }
-
+        class ExtendsClass {
             public void extendsMethod(List<? extends Fruit> extendsList) {
                 // ERROR:
                 // 出错原理同上,不能调用形如 method(T t)方法
@@ -192,10 +187,16 @@ public class GenericTest {
                 // extendsList.add(apple);
                 // extendsList.add(new Object());
                 // SUCCESS
-                Fruit fruit = extendsList.get(0);
+                // 获取是父类,可以强转为子类再使用
+                Fruit getFruitByList = extendsList.get(0);
+                getFruitByList.echo();
             }
         }
+        ExtendsClass extendsClass = new ExtendsClass();
+        extendsClass.extendsMethod(fruits);
+        extendsClass.extendsMethod(apples);
+        // 明显无法调用
+        List<Object> objects = Lists.newArrayList(new Object());
+        // extendsClass.extendsMethod(objects);
     }
-
-
 }
