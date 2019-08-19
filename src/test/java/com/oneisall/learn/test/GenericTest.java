@@ -438,9 +438,9 @@ public class GenericTest {
          // superFruitPlate.set(food);
          // superFruitPlate.methodWithT(food);
          superFruitPlate 可能指向 Plate<Fruit> , 此时以上调用等价于
-         Plate<Food> pearPlate=new Plate<Fruit>();
-         pearPlate.set(food);
-         pearPlate.methodWithT(food);
+         Plate<Fruit> fruitPlate=new Plate<Fruit>();
+         fruitPlate.set(food);
+         fruitPlate.methodWithT(food);
          明显类型不相同,且不符合多态,导致编译异常
          * */
 
