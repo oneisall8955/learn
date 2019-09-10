@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 /**
- * 测试泛类类型擦除
+ * 泛类类型编码与实际运行时不匹配的原因:反射setXXX方法被调用
  *
  * @author : oneisall
  * @version : v1 2019/9/10 11:54
