@@ -14,4 +14,6 @@ public class CommonTest {
         String capitalize = StringUtils.capitalize(StringUtils.lowerCase(aaa));
         System.out.println(capitalize);
     }
+    
+    // 这一行是来自 Git 仓库 啊，模拟别人提交，产生冲突
 }
