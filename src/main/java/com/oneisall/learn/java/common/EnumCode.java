@@ -7,11 +7,11 @@ package com.oneisall.learn.java.common;
  * @version V1.0
  * @date 2019/12/11
  **/
-public interface EnumCode {
+public interface EnumCode <T>{
     /**
      * 获取code
      *
      * @return code
      */
-    int getCode();
+    T getCode();
 }
