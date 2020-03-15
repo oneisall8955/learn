@@ -1,7 +1,7 @@
 package com.oneisall.learn.java.utils;
 
 
-import com.oneisall.learn.java.common.EnumCode;
+import com.oneisall.learn.helper.EnumCode;
 import com.oneisall.learn.java.common.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

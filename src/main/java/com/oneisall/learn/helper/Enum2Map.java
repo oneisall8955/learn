@@ -1,4 +1,4 @@
-package com.oneisall.learn.java.common;
+package com.oneisall.learn.helper;
 
 import com.google.common.collect.ImmutableMap;
 
@@ -14,9 +14,8 @@ import java.util.Map;
 public interface Enum2Map {
   Map<String, Object> toMap();
 
-  default Map<String, Object> toMap(String name, Object code, String text) {
+  default Map<String, Object> toMap(int code, String text) {
     return ImmutableMap.<String, Object>builder()
-            .put("name", name)
             .put("code", code)
             .put("text", text)
             .build();

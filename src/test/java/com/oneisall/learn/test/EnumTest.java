@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.oneisall.learn.helper.EnumCode;
+import com.oneisall.learn.helper.KecDateDeserializer;
+import com.oneisall.learn.helper.KecDateSerializer;
 import com.oneisall.learn.java.common.Enum2Map;
-import com.oneisall.learn.java.common.EnumCode;
-import com.oneisall.learn.java.common.EnumDeSerializer;
-import com.oneisall.learn.java.common.EnumSerializer;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -69,12 +69,12 @@ public class EnumTest {
 
     public static class Foo {
 
-        @JsonDeserialize(using = EnumDeSerializer.class)
-        @JsonSerialize(using = EnumSerializer.class)
+        @JsonDeserialize(using = KecDateSerializer.EnumDeSerializer.class)
+        @JsonSerialize(using = KecDateDeserializer.EnumSerializer.class)
         private Color color;
 
-        @JsonDeserialize(using = EnumDeSerializer.class)
-        @JsonSerialize(using = EnumSerializer.class)
+        @JsonDeserialize(using = KecDateSerializer.EnumDeSerializer.class)
+        @JsonSerialize(using = KecDateDeserializer.EnumSerializer.class)
         private Fruit fruit;
 
         public Color getColor() {

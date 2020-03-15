@@ -1,4 +1,4 @@
-package com.oneisall.learn.java.common;
+package com.oneisall.learn.helper;
 
 /**
  * 枚举可以获取 code

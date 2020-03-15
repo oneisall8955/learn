@@ -1,4 +1,4 @@
-package com.oneisall.learn.java.common;
+package com.oneisall.learn.helper;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
@@ -8,12 +8,12 @@ import java.io.IOException;
 import java.util.Optional;
 
 /**
- * 自定义枚举转map
+ * 定义枚举序列化Json规则
  *
  * @author : oneisall
  * @version : v1 2018/7/15 15:15
  */
-public class EnumSerializer extends JsonSerializer<Enum2Map> {
+public class KecEnumSerializer extends JsonSerializer<Enum2Map> {
 
 
   @Override
