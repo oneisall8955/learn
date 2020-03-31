@@ -16,7 +16,7 @@ import java.util.List;
  * <p></p>
  * 并发编程网: 泛型中? super T和? extends T的区别 : http://ifeve.com/difference-between-super-t-and-extends-t-in-java/
  * <p></p>
- * stackoverflow:Difference between <? super T> and <? extends T> in Java [duplicate]:https://stackoverflow.com/questions/4343202/difference-between-super-t-and-extends-t-in-java
+ * stackoverflow:Difference between <? super T> and <? extends T> in Java:https://stackoverflow.com/questions/4343202/difference-between-super-t-and-extends-t-in-java
  * @author : oneisall
  * @version : v1 2019/8/13 09:29
  */
@@ -88,15 +88,17 @@ public class GenericTest {
         fruitPlate.set(apple);
         fruitPlate.methodWithT(apple);
 
-        // 父类容器与子类容器的关系,此处关注的是容器这个类!!!
-        // 并没有像父子类中的继承关系!!!
+        // 父类容器引用指向(被赋值)子类容器
+        // 父类容器与子类容器的关系,此处关注的是容器Plate这个类!!!
+        // 并没有像父子类中的继承关系(多态)!!!
         // apple's plate is not a fruit's plate
         // ERROR
-        // fruitPlate = applePlate;
+        // fruitPlate = applePlate; // 装水果的盘子无法指向装苹果
         // ERROR
-        // applePlate = fruitPlate;
+        // applePlate = fruitPlate; // 明显错误,子类容器指向父类容器
 
-        // 为解决此类容器间'继承多态'问题,使用了<? extends T>及<? supper T>
+        // 以上测试代码中,父类容器引用指向(被赋值)子类容器,编译报错,是跟多态上的认识是相反的结果
+        // 为了解决此类容器间'继承多态'问题,实现父子容器泛类引用指向,于是JDK提供了<? extends T>及<? supper T>
     }
 
     /**
@@ -111,13 +113,13 @@ public class GenericTest {
 
         Plate<Fruit> fruitPlate = new Plate<>();
         Plate<Apple> applePlate = new Plate<>();
-        Plate<? extends Fruit> extendsFruitPlate = new Plate<>();
+        Plate<? extends Fruit> extendsFruitPlate;
 
         // ERROR
         // fruitPlate = applePlate;
 
         // SUCCESS
-        // Plate<? extends Fruit>是Plate<Fruit>以及Plate<Apple>的基类
+        // Plate<? extends Fruit>引用可以指向Plate<Fruit>以及Plate<Apple>
         extendsFruitPlate = applePlate;
         extendsFruitPlate = fruitPlate;
 
@@ -169,11 +171,7 @@ public class GenericTest {
         extendsFruitPlate = new Plate<Apple>(apple);
         extendsFruitPlate = new Plate<Pear>(pear);
 
-        // <? extends T> 容器的API注意点:不能往里存,只能往外取
-        // Attention: 意思是:泛类实例用<? extends T>修饰,该泛类的API中,
-        // 方法形如 method(T t)均不能再被使用.
-        // 方法形如 T method(XX xx)均可以调用(XX xx代表任何确定的类型或者无参)
-        // '不能往里存，只能往外取',这种描述不是很准确,只是比较通俗易懂.
+        // 以下ERROR代码,尝试调用接收泛型T的方法,均编译不过
         // ERROR:
         // extendsFruitPlate.set(fruit);
         // extendsFruitPlate.set(apple);
@@ -212,7 +210,7 @@ public class GenericTest {
         class ExtendsClass {
             public void extendsMethod(List<? extends Fruit> extendsList) {
                 // ERROR:
-                // 出错原理同上,不能调用形如 method(T t)方法
+                // 出错原理同上,不能调用接收泛型T的方法
                 // extendsList.add(fruit);
                 // extendsList.add(apple);
                 // extendsList.add(new Object());
@@ -228,7 +226,7 @@ public class GenericTest {
 
         List<Object> objects = Lists.newArrayList(new Object());
         // ERROR
-        // 明显无法调用
+        // List<? extends Fruit> extendsList只能接收Fruit的子类List,否则编译出错
         // extendsClass.extendsMethod(objects);
 
         /**
@@ -440,9 +438,9 @@ public class GenericTest {
          // superFruitPlate.set(food);
          // superFruitPlate.methodWithT(food);
          superFruitPlate 可能指向 Plate<Fruit> , 此时以上调用等价于
-         Plate<Food> pearPlate=new Plate<Fruit>();
-         pearPlate.set(food);
-         pearPlate.methodWithT(food);
+         Plate<Fruit> fruitPlate=new Plate<Fruit>();
+         fruitPlate.set(food);
+         fruitPlate.methodWithT(food);
          明显类型不相同,且不符合多态,导致编译异常
          * */
 

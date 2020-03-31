@@ -1,5 +1,8 @@
 package com.oneisall.learn.java.advanced.annotation;
 
+import com.oneisall.learn.java.common.Result;
+import org.junit.Test;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -33,7 +36,7 @@ public class MainTest {
         People people = new People();
         System.out.println(people.getName());
         System.out.println(people.getName());
-        name.set(people,annotation.value());
+        name.set(people, annotation.value());
         System.out.println(people.getName());
         System.out.println(people.getAddress());
 
@@ -43,9 +46,20 @@ public class MainTest {
         System.out.println(address.isAccessible());
         address.setAccessible(true);
         System.out.println(people.getAddress());
-        address.set(people,annotation.value());
+        address.set(people, annotation.value());
         System.out.println(people.getAddress());
 
         Custom.class.getClasses();
+    }
+
+    class Foo {
+        @Nullable Result test() {
+            return null;
+        }
+    }
+
+    @Test
+    public void test00() {
+        @Nullable Result test = new Foo().test();
     }
 }
