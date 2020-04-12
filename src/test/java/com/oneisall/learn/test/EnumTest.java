@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.oneisall.learn.helper.Enum2Map;
 import com.oneisall.learn.helper.EnumCode;
 import com.oneisall.learn.helper.KecDateDeserializer;
 import com.oneisall.learn.helper.KecDateSerializer;
-import com.oneisall.learn.java.common.Enum2Map;
 import org.junit.Test;
 
 import java.io.IOException;
