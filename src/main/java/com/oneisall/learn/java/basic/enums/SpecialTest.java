@@ -1,6 +1,7 @@
 package com.oneisall.learn.java.basic.enums;
 
 import org.junit.Test;
+import com.oneisall.learn.java.advanced.thread.ThreadPoolExecutorTest ;
 
 /**
  * 枚举的特殊点!!!首先,枚举是特殊的类!!!
@@ -93,5 +94,6 @@ public class SpecialTest {
         bar.hello();
         System.out.println(foo.getClass().getName());
         System.out.println(bar.getClass().getName());
+        System.out.println("opt import class test");
     }
 }
