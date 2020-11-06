@@ -10,9 +10,13 @@ public class T14LongestCommonPrefix {
         for (; ; ) {
             char pre = '\0';
             char cur = '\0';
-            // boolean shortestReach = false;
+            boolean shortestReached = false;
             boolean diff = false;
-            for (int index = 0, strListLength = strList.length; index < strListLength; index++) {
+            for (int index = 0, length = strList.length; index < length; index++) {
+                if (index > length - 1) {
+                    shortestReached = true;
+                    break;
+                }
                 String s = strList[index];
                 cur = s.charAt(i);
                 if (index == 0) {
@@ -25,7 +29,7 @@ public class T14LongestCommonPrefix {
                 }
                 pre = cur;
             }
-            if (diff) {
+            if (diff || shortestReached) {
                 break;
             }
             i++;
@@ -34,7 +38,7 @@ public class T14LongestCommonPrefix {
     }
 
     public static void main(String[] args) {
-        String result = new T14LongestCommonPrefix().longestCommonPrefix(new String[]{"azc", "azd"});
+        String result = new T14LongestCommonPrefix().longestCommonPrefix(new String[]{"dog","racecar","car"});
         System.out.println(result);
     }
 }
