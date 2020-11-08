@@ -93,5 +93,7 @@ public class SpecialTest {
         bar.hello();
         System.out.println(foo.getClass().getName());
         System.out.println(bar.getClass().getName());
+        System.out.println("opt import class test");
+        System.out.println("opt import class test2");
     }
 }
