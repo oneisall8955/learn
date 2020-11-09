@@ -54,17 +54,17 @@ public class T21MergeTwoLists {
         while (!(l1 == null && l2 == null)) {
             ListNode litele = null;
             if (l1 == null && l2 != null) {
-                litele = new ListNode(l2.val);
+                litele = l2;
                 l2 = l2.next;
             } else if (l2 == null && l1 != null) {
-                litele = new ListNode(l1.val);
+                litele = l1;
                 l1 = l1.next;
             } else {
                 if (l1.val <= l2.val) {
-                    litele = new ListNode(l1.val);
+                    litele = l1;
                     l1 = l1.next;
                 } else {
-                    litele = new ListNode(l2.val);
+                    litele = l2;
                     l2 = l2.next;
                 }
             }
