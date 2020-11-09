@@ -21,7 +21,7 @@ public class CommFactory implements Factory {
 
     }
 
-    public static CommFactory getInstance(String brand) {
+    public static Factory getInstance(String brand) {
         String brandFix = brand.substring(0, 1).toUpperCase() + brand.substring(1).toLowerCase();
         String basePackName = "com.oneisall.learn.universal.design.pattern.factory";
         CommFactory commFactory = new CommFactory();
@@ -38,8 +38,8 @@ public class CommFactory implements Factory {
         try {
             Class<?> factoryClass = Class.forName(factoryPackageName);
             Method method = factoryClass.getDeclaredMethod("getInstance");
-            Object invoke = method.invoke(null);
-            factory = (Factory) invoke;
+            Object result = method.invoke(null);
+            factory = (Factory) result;
         } catch (Exception e) {
             e.printStackTrace();
         }
