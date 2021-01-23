@@ -4,6 +4,11 @@ find /opt/soft/log/ -mtime +7 -name "*.log" -exec rm -rf {} \;
 # 去重 tmp.txt 是文本
 awk '!a[$0]++' tmp.txt
 
+# 排序 tmp.txt 是文本
+sort tmp.txt
+# 排序 重新到另一个文本
+sort tmp.txt > tmp_sorted.txt
+
 # ssh 本地端口转发到远程服务端口
 # A主机指定开启一个端口，用来转发到B主机的某个端口
 # A主机执行以下命令，访问A的18080端口即可访问 192.168.1.1 的8080端口服务
