@@ -34,7 +34,7 @@ public class QuickSort786 {
      * else
      * quickSort Right(j+1,r,k-sizeLeft)
      * -------------------------
-     * 排右边的参数为k-sizeLeft，原因是左边已经不满足，还需要第k-sizeLeft个数就是答案
+     * 排右边的参数为k-sizeLeft，原因是左边已经不满足，在右边还需要k-sizeLeft个数就是答案
      */
     @SuppressWarnings("all")
     private static int quickSort(int[] q, int l, int r, int k) {
