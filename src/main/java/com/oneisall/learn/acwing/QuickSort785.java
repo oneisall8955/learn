@@ -32,7 +32,7 @@ public class QuickSort785 {
         }
         // 第1步，找x，注意定义为两侧
         int x = q[l], i = l - 1, j = r + 1;
-        while (i < j) {
+        while (i < j) { // 每一次循环，代表i与j暂停，交换后!i和j继续左走和右走
             // 第2步，以x为标准分隔，走左右两边
             do {
                 i++;
@@ -40,15 +40,17 @@ public class QuickSort785 {
             do {
                 j--;
             } while (q[j] > x);
-            // 第3步，两个指针还没有相遇，交换
+            // 第3步，两个指针还没有相遇，交换，没有交换，（如果i与j相遇了，就不能交换了，交换就出问题!）
             if (i < j) {
                 int tmp = q[i];
                 q[i] = q[j];
                 q[j] = tmp;
+            }else {
+                // 这里代表相遇，相遇则不会有下个循环，本次结束
             }
         }
         // 第四步，递归排左和右
-        quickSort(q, l, j);
+        quickSort(q, l, j); //
         quickSort(q, j + 1, r);
     }
 }
