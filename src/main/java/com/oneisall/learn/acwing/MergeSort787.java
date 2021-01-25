@@ -1,19 +1,25 @@
 package com.oneisall.learn.acwing;
 
+import java.util.Scanner;
+
 /**
  * @author liuzhicong
  **/
 public class MergeSort787 {
-    public static int[] tmp = new int[100010];
-
-    public static void main(String[] args) {
-        int[] q = new int[]{3, 5, 3, 9, 8};
+    private static int N = 100010;
+    public static int[] tmp = new int[N];
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] q = new int[n];
+        for(int i = 0;i < n;i++){
+            q[i] = scanner.nextInt();
+        }
         mergeSort(q, 0, q.length - 1);
         for (int value : q) {
             System.out.print(value + " ");
         }
     }
-
     /**
      * 第一步：找出mid
      * -------mid
