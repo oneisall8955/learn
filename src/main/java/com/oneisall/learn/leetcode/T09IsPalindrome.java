@@ -9,7 +9,7 @@ package com.oneisall.learn.leetcode;
  *
  * @author liuzhicong
  **/
-public class T9IsPalindrome {
+public class T09IsPalindrome {
     public boolean isPalindrome(int x) {
         if (x < 0) {
             return false;
@@ -43,6 +43,6 @@ public class T9IsPalindrome {
     }
 
     public static void main(String[] args) {
-        System.out.println(new T9IsPalindrome().isPalindrome(101));
+        System.out.println(new T09IsPalindrome().isPalindrome(101));
     }
 }
