@@ -1,7 +1,7 @@
 package com.oneisall.learn.leetcode;
 
 /**
- * nums = [3,2,2,3], val = 3,
+ * nums = [1,3,2,2,3,4,5], val = 3,
  * //函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。
  *
  * @author : liuzhicong
@@ -10,43 +10,45 @@ package com.oneisall.learn.leetcode;
 @SuppressWarnings("all")
 public class T27RemoveElement {
 
-    public int removeDuplicates(int[] nums) {
-        int leftIndex = 0;
-        int remainLength = nums.length;
-        for (; leftIndex < remainLength; leftIndex++) {
-            int left = nums[leftIndex];
-            int rightIndex = leftIndex + 1;
-            if (rightIndex == remainLength) {
-                return remainLength;
+    public int removeElement(int[] nums, int val) {
+        int p = 0;
+        int q = nums.length - 1;
+        if (p == q) {
+            if (nums[p] == val) {
+                return 0;
+            } else {
+                return 1;
             }
-            while (rightIndex <= remainLength - 1) {
-                int right = nums[rightIndex];
-                if (right == left) {
-                    rightIndex++;
-                } else {
-                    rightIndex--;
+        }
+        while (p < q) {
+            int num = nums[p];
+            if (num == val) {
+                // 从尾部逆向找不是val的位置
+                while (p < q) {
+                    if (nums[q] != val) {
+                        break;
+                    }
+                    q--;
+                }
+                if (p >= q) {
+                    // 相碰了，已经移动完成
                     break;
                 }
+                nums[p] = nums[q];
+                nums[q] = num;
             }
-            if (rightIndex > leftIndex) {
-                merge(nums, leftIndex, rightIndex);
-                remainLength = remainLength - (rightIndex - leftIndex);
-            }
+            p++;
         }
-        return remainLength;
+        return p;
     }
-    private void merge(int[] source, int leftIndex, int rightIndex) {
-        int leftOffset = leftIndex + 1;
-        int rightOffset = rightIndex + 1;
-        int limit = source.length - 1;
-        while (leftOffset <= limit) {
-            if (rightOffset <= limit) {
-                source[leftOffset] = source[rightOffset];
-            } else {
-                source[leftOffset] = -1;
-            }
-            leftOffset++;
-            rightOffset++;
+
+    public static void main(String[] args) {
+        int[] nums = {3,3};
+        int i = new T27RemoveElement().removeElement(nums, 5);
+        for (int j = 0; j < i; j++) {
+            System.out.println(nums[j]);
         }
     }
+
+
 }
