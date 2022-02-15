@@ -28,4 +28,4 @@ ssh -fNL *:18081:localhost:18080 root@localhost
 # 此时，使用192.168.1.1:18081或123.123.123.123:18081即可访问到A服务
 
 # systemd service 日志
-journalctl frps.service --since "2018-08-30 14:10:10" --until "2018-09-02 12:05:50"
+journalctl -u xxx.service --since "2018-08-30 14:10:10" --until "2018-09-02 12:05:50"
