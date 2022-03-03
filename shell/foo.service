@@ -1,0 +1,22 @@
+# systemd service example
+# cp foo.service /etc/systemd/system/
+# systemctl daemon-reload
+# systemctl enable foo.service
+# ----------------------------
+# /usr/lib/systemd/system
+# /etc/systemd/system
+# ----------------------------
+[Unit]
+Description=Foo server
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/foo.d/
+Type=simple
+#User=root
+RestartSec=5s
+Restart=on-failure
+ExecStart=/usr/bin/foo
+
+[Install]
+WantedBy=multi-user.target
