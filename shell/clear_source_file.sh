@@ -2,9 +2,14 @@
 
 this_shell_dir=$(cd $(dirname $0); pwd)
 
-echo "输入需要清理的已刮削的文件夹："
 
-read gen_folder
+gen_folder=$1
+
+if [ -z "$gen_folder" ]; then
+    echo "输入需要清理的已刮削的文件夹："
+    read input0
+    gen_folder=$input0
+fi
 
 if [ -z $gen_folder ]; then
     echo "未输入gen_folder"
@@ -51,8 +56,12 @@ files=$(cat $gen_files_record_file)
 for filename in $files
 do
     file_path="$to_upload_folder/$filename"
-    echo "删除原文件=$file_path"
-    rm -rf $file_path
+    if [[ -d $file_path ]]; then
+        echo "目录文件=$file_path，不删除"
+    else
+        echo "删除文件=$file_path"
+        rm -rf $file_path
+    fi
 done
 
 to_delete_gen_files_record_file="$to_upload_folder/.gen.record"
