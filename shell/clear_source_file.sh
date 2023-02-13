@@ -3,15 +3,15 @@
 this_shell_dir=$(cd $(dirname $0); pwd)
 
 
-gen_folder=$1
+gen_folder="$1"
 
 if [ -z "$gen_folder" ]; then
     echo "输入需要清理的已刮削的文件夹："
     read input0
-    gen_folder=$input0
+    gen_folder="$input0"
 fi
 
-if [ -z $gen_folder ]; then
+if [ -z "$gen_folder" ]; then
     echo "未输入gen_folder"
     exit
 fi
@@ -20,7 +20,7 @@ if [ ! -d "$gen_folder" ]; then
     echo "gen_folder文件夹不存在"
     exit
 fi
-gen_folder_name=$(basename $gen_folder)
+gen_folder_name=$(basename "$gen_folder")
 if [ -z $gen_folder_name ]; then
     echo "异常，target文件夹的名称为空"
     exit
@@ -37,7 +37,7 @@ to_upload_folder="$this_shell_dir/${gen_folder_name}_scrape_to_upload"
 
 if read -t 10 -p "输入1/y确认删除并重新复制文件夹=$to_upload_folder：" input
 then
-    if [ $input == "1" ] || [ $input == "y" ]; then
+    if [ "$input" == "1" ] || [ "$input" == "y" ]; then
         echo "删除=$to_upload_folder"
         rm -rf $to_upload_folder
         echo "复制=$to_upload_folder"
@@ -51,21 +51,22 @@ else
     exit
 fi
 
-files=$(cat $gen_files_record_file)
+files=$(cat "$gen_files_record_file")
 
-for filename in $files
+
+cat "$gen_files_record_file" | while read line
 do
-    file_path="$to_upload_folder/$filename"
-    if [[ -d $file_path ]]; then
+    file_path="$to_upload_folder/$line"
+    if [[ -d "$file_path" ]]; then
         echo "目录文件=$file_path，不删除"
     else
         echo "删除文件=$file_path"
-        rm -rf $file_path
+        rm -rf "$file_path"
     fi
 done
 
 to_delete_gen_files_record_file="$to_upload_folder/.gen.record"
 echo "删除记录文件=$to_delete_gen_files_record_file"
-rm -rf $to_delete_gen_files_record_file
+rm -rf "$to_delete_gen_files_record_file"
 
 echo "已清理完毕，文件夹在=$to_upload_folder"
